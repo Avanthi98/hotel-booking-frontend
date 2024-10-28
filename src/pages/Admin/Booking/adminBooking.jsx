@@ -62,10 +62,10 @@ export default function AdminBooking() {
     return (
       <div className="w-full p-6 bg-purple-500 min-h-screen">
         <h1 className="text-2xl font-bold text-center my-4 text-gray-700">
-          Booking Table
+          Bookings
         </h1>
   
-        <table className="w-full border-b border-black border-y-2 border-x-2 bg-gray-200  shadow-md overflow-hidden">
+        <table className="w-full border-b border-black border-y-2 border-x-2 bg-gray-200 overflow-hidden">
           <thead className="border-b border-black">
             <tr className="bg-gray-400 text-gray-700">
               <th className="px-2 py-2  border-black border-y-2 border-x-2">Booking ID</th>
