@@ -61,7 +61,7 @@ const rooms = [
   },
 ];
 
-export default function AdminRooms() {
+export default function AdminRooms() {//Function name should start with capital letter
   return (
     <div className="w-full p-6">
       <h1 className="text-2xl font-bold text-center my-4 text-gray-700">
@@ -115,7 +115,7 @@ export default function AdminRooms() {
                   <div className="flex gap-2 overflow-x-auto max-w-xs items-center justify-center">
                     {room.photos.map((photo, index) => (
                       <img
-                        key={index}
+                        key={index} //Here we can use array index as a key if that element does'nt have an any special key
                         src={photo}
                         className="w-16 h-16 object-cover border border-black rounded"
                       />

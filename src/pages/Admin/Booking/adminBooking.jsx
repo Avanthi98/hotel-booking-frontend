@@ -62,7 +62,7 @@ export default function AdminBooking() {
     return (
       <div className="w-full p-6 bg-purple-500 min-h-screen">
         <h1 className="text-2xl font-bold text-center my-4 text-gray-700">
-          Bookings
+          Bookings Management
         </h1>
   
         <table className="w-full border-b border-black border-y-2 border-x-2 bg-gray-200 overflow-hidden">
