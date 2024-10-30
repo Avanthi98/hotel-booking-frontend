@@ -28,11 +28,11 @@ export default function LoginPage(){
 
     return(
         <div className="w-full h-[100vh] pic-bg flex justify-center items-center">
-            <div className="w-[400px] h-[350px] backdrop-blur-md rounded-2xl flex flex-col items-center relative">
+            <div className="w-[400px] h-[350px] backdrop-blur-md rounded-2xl flex flex-col items-center relative text-[14px]">
             <h1 className="text-white text-center mt-8 mb-6 text-[25px] font-semibold">Login</h1>
 
             <input type="email" placeholder="Enter Your Email:" 
-            className="w-[80%] h-11 rounded-md px-4 placeholder:p-2 bg-[#00000000] placeholder:text-white text-white border-[2px] mb-3 mt-3"
+            className="w-[80%] h-8 rounded-md px-4 placeholder:p-2 bg-[#00000000] placeholder:text-white text-white border-[2px] mb-3 mt-3"
             defaultValue={email} onChange={
                 (e)=>{
                     setEmail(e.target.value);
@@ -41,7 +41,7 @@ export default function LoginPage(){
             </input>
 
             <input type="password" placeholder="Enter Your Password:" 
-            className="w-[80%] h-11 rounded-md px-4 placeholder:p-2 bg-[#00000000] placeholder:text-white text-white border-[2px] mb-3"
+            className="w-[80%] h-8 rounded-md px-4 placeholder:p-2 bg-[#00000000] placeholder:text-white text-white border-[2px] mb-3"
             defaultValue={password} onChange={
                 (e)=>{
                     setPassword(e.target.value);
@@ -49,7 +49,10 @@ export default function LoginPage(){
             }>
             </input>
 
-            <button className="w-[80%] h-11 px-4 placeholder:p-4 bg-red-500 placeholder:text-white text-white border-[2px] absolute bottom-[50px] flex items-center justify-center"
+            <span className="text-white mt-2">Don't have an account?</span>
+           <a href="/signup"><span className="text-blue-300 underline">Sign Up</span></a>
+
+            <button className="w-[100px] h-8 px-4 placeholder:p-4 bg-red-500 placeholder:text-white text-white border-[2px] absolute bottom-[50px] flex items-center justify-center"
             onClick={handleLogin}>Login</button>{/* when you click the button handleLogin function will run*/}
             </div>
             
