@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/Client_Pages/homePage";
+import HomePage from "./pages/Client_Pages/ClientHomePage/homePage";
 import AdminPage from "./pages/Admin_Pages/adminHomePage";
 import TestComponent from "./Components/Test/testComponent";
 import Login from "./pages/LoginPage/loginPage";
