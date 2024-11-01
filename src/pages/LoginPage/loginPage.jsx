@@ -14,10 +14,17 @@ export default function LoginPage(){
             password:password
         }).then(
             (res)=>{
-                console.log(res.data);
+                console.log(res.data); //print data in console
                 localStorage.setItem("token",res.data.token);//Set data to save in localstorage
                 const token=localStorage.getItem("token")//get saved data from local storage
-                console.log(token)
+                //console.log(token);//Print token in console
+
+                if(res.data.user.type=="customer"){
+                    window.location.href="/";
+                }
+                else{
+                    window.location.href="/admin";
+                }
             }
         ).catch(
             (err)=>{
