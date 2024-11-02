@@ -1,0 +1,11 @@
+.welcomeImg{
+    background-image: url("/home.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.212);
+    background-blend-mode: color;
+}
+.font-fam{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

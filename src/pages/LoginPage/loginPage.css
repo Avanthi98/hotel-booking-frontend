@@ -1,0 +1,12 @@
+.pic-bg{
+    background-image: url("/beachside.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-color:rgba(1, 1, 85, 0.548);
+    background-blend-mode: color;   
+}
+.fontfam{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
