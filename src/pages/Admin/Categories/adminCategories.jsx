@@ -5,6 +5,13 @@ import { MdDelete } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
 
 export default function AdminCategory() {
+  //Get the token from local storage
+  const token=localStorage.getItem("token");
+  console.log(token)
+  if(token==null){
+    window.location.href="/login"
+  }
+
   //Create usestates
   const [categories, setCategories] = useState([]);
   const [categoryIsLoaded, setCategoryIsLoaded] = useState(false);
@@ -19,11 +26,29 @@ export default function AdminCategory() {
           setCategories(res.data.result);
           setCategoryIsLoaded(true);
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        
     }
   }, [categoryIsLoaded]);
+
+   //Implementing delete function
+   function handleDelete(name){
+    axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name,{
+      //Check whether the user is an admin or not
+      headers:{
+        Authorization:"Bearer "+token
+      }
+    }).then(
+      (res)=>{
+        setCategoryIsLoaded(false),
+        console.log(res)
+      }
+    ).catch(
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
+
   return (
     <div className="w-full p-6 flex flex-col items-center">
       <h1 className="text-gray-700 text-2xl font-bold text-center my-4">
@@ -54,7 +79,7 @@ export default function AdminCategory() {
         <tbody>
           {categories.map((category, index) => {
             return (
-              <tr key={category.name}>
+              <tr key={index}>
                 <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
                   {category.name}
                 </td>
@@ -82,8 +107,11 @@ export default function AdminCategory() {
                 </td>
                 <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
                   <div className="flex items-center justify-center">
-                  <button ><MdDelete  size={30} color="red"/></button>
-                  <button><MdEditDocument size={30} color="blue" /></button>
+                  <button className="text-red-600 text-[25px]"
+                  onClick={()=>{handleDelete(category.name)}}><MdDelete /></button>
+
+                  <button onClick={()=>{}} className="text-blue-700 text-[22px]"
+                  ><MdEditDocument /></button>
                   </div>
                 </td>
               </tr>
