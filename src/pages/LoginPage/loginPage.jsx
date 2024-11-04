@@ -1,12 +1,17 @@
 import { useState } from "react"
 import "./loginPage.css"
 import axios from "axios" //This library use for instead of postman to send requests from localhost
+import { useNavigate } from "react-router-dom"
 
 export default function LoginPage(){
 
 //Creating two hooks for email and password variables
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
+
+//Creating useNavigate hook for navigations
+const navigate=useNavigate()
+
 
     function handleLogin(){
         axios.post(import.meta.env.VITE_BACKEND_URL+"/api/users/login",{
@@ -17,13 +22,15 @@ export default function LoginPage(){
                 console.log(res.data); //print data in console
                 localStorage.setItem("token",res.data.token);//Set data to save in localstorage
                 const token=localStorage.getItem("token")//get saved data from local storage
-                //console.log(token);//Print token in console
+                console.log(token);//Print token in console
 
                 if(res.data.user.type=="customer"){
-                    window.location.href="/";
+                    //window.location.href="/";
+                    navigate("/");
                 }
                 else{
-                    window.location.href="/admin";
+                    //window.location.href="/admin";
+                    navigate("/admin")
                 }
             }
         ).catch(

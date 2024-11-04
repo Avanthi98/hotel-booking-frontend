@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function UserTag(props){
     const [name,setName]=useState("") //Create a hook for changable variable
     const[userFound,setUserFound]=useState(false)//This hook used to find if there is a user or not
-
-    const token=localStorage.getItem("token"); //get token from local storage and equal it to const variable
+    const navigate=useNavigate();
 
     //Creating the use effect--> useEffect(empty arrow function(),[dependancy array-empty])
    useEffect(
@@ -13,7 +13,7 @@ function UserTag(props){
         const token=localStorage.getItem("token"); //get token from local storage and equal it to const variable
         if(token!=null){
             
-            axios.get(import.meta.env.VITE_BACKEND_URL+"/api/users/",{
+            axios.get(import.meta.env.VITE_BACKEND_URL+"/api/users",{
              headers:{
                  Authorization:"Bearer "+token,
                 "Content-Type":"application/json"
@@ -39,6 +39,7 @@ function UserTag(props){
             onClick={()=>{
                 localStorage.removeItem("token")//When you click log out button it must remove the user token
                 setUserFound(false)
+                navigate("/login")
             }}>
                 Logout
             </button>
