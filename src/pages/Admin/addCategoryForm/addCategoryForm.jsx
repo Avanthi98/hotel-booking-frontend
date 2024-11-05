@@ -2,6 +2,8 @@ import { useState } from "react";
 import uploadMedia from "../../../Utils/mediaUpload";
 import { getDownloadURL } from "firebase/storage";
 import axios from "axios";
+import toast from "react-hot-toast";
+
 export default function AddCategoryForm() {
   // Implementing use states
   const [name, setName] = useState("");
@@ -9,6 +11,7 @@ export default function AddCategoryForm() {
   const [features, setFeatures] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [isloading, setIsLoading] = useState(false); //Create a usestate to check whether button is loading or not
 
   //Get token and check user authorization
   const token = localStorage.getItem("token");
@@ -26,7 +29,7 @@ export default function AddCategoryForm() {
   // Handler for form submission
   function handleSubmit(e) {
     e.preventDefault(); //To avoid refreshing page
-    alert("Form submitted");
+    setIsLoading(true); //To once you click the submit button start loading the circle
 
     //Features array splitting
     const featuresArray = features.split(",");
@@ -48,6 +51,12 @@ export default function AddCategoryForm() {
       })
       .then((res) => {
         console.log(res);
+        toast.success("Category added successfully!");
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Category creation failed!");
       });
 
     /*uploadMedia(image).then(
@@ -115,9 +124,13 @@ export default function AddCategoryForm() {
           <div className="flex justify-center my-3">
             <button
               type="submit"
-              className="w-[400px] h-9 placeholder:p-3 rounded-md border bg-blue-500 text-white font-semibold"
+              className="w-[400px] h-9 placeholder:p-3 rounded-md border bg-blue-600 text-white font-semibold flex justify-center items-center"
             >
-              Add Category
+              {isloading ? (
+                <div className="w-[20px] h-[20px] border-t border-white border-dotted border-2 rounded-full animate-spin ml-3"></div>
+              ) : (
+                <span>Add Category</span>
+              )}
             </button>
           </div>
         </form>

@@ -19,39 +19,39 @@ import AddCategoryForm from "../Admin/addCategoryForm/addCategoryForm";
 export default function AdminPage() {
   return (
     <div className=" w-full max-h-[100vh] overflow-hidden flex">
-      <div className="bg-gradient-to-b from-purple-700 to-pink-500 w-[20%] h-[100vh] flex flex-col pl-3">
-        <div className="text-white text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
+      <div className="bg-gradient-to-b from-purple-700 to-fuchsia-600 w-[20%] h-[100vh] flex flex-col pl-3">
+        <div className="text-white text-[20px]  font-bold hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2 pt-6">
           <BsBookmarkCheck />
           <Link to="/admin/bookings ">Bookings</Link>
         </div>
 
-        <div className="text-white text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
+        <div className="text-white font-bold text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
           <MdOutlineRoom />
           <Link to="/admin/rooms ">Rooms</Link>
         </div>
 
-        <div className=" text-white text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
+        <div className=" text-white font-bold text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
           <BiCategory />
           <Link to="/admin/categories ">Categories</Link>
         </div>
 
-        <div className=" text-white text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
+        <div className=" text-white font-bold text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
           <HiOutlineUsers />
           <Link to="/admin/users ">Users</Link>
         </div>
 
-        <div className="text-white text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
+        <div className="text-white font-bold text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
           <MdOutlineFeedback />
           <Link to="/admin/feedbacks ">Feedbacks</Link>
         </div>
 
-        <div className=" text-white text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
+        <div className=" text-white font-bold text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
           <GrGallery />
           <Link to="/admin/galleryitems ">Gallery Items</Link>
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-violet-500 to-fuchsia-500 w-[80%] max-h-[100vh] overflow-y-scroll">
+      <div className="bg-gradient-to-r from-purple-500 to-blue-400 w-[80%] max-h-[100vh] overflow-y-scroll">
         <Routes path="/*">
           <Route path="/bookings" element={<AdminBooking />}></Route>
           <Route path="/rooms" element={<AdminRooms />}></Route>

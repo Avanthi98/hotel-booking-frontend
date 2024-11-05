@@ -6,7 +6,7 @@ export default function HomePage() {
       <Header />
       <div className="w-full h-screen">
         
-        <div className="w-full h-[320px] bg-purple-300 flex flex-col items-center">
+        <div className="w-full h-[320px] bg-gradient-to-l from-purple-400 to-blue-300 flex flex-col items-center">
           <h1 className="text-purple-800 text-4xl font-bold mt-10  mb-8">
             Welcome to LeoNine Villa!
           </h1>
