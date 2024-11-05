@@ -19,7 +19,7 @@ import AddCategoryForm from "../Admin/addCategoryForm/addCategoryForm";
 export default function AdminPage() {
   return (
     <div className=" w-full max-h-[100vh] overflow-hidden flex">
-      <div className="bg-purple-800 w-[20%] h-[100vh] flex flex-col pl-3">
+      <div className="bg-gradient-to-b from-purple-700 to-pink-500 w-[20%] h-[100vh] flex flex-col pl-3">
         <div className="text-white text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
           <BsBookmarkCheck />
           <Link to="/admin/bookings ">Bookings</Link>
@@ -51,7 +51,7 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div className="bg-purple-500 w-[80%] max-h-[100vh] overflow-y-scroll">
+      <div className="bg-gradient-to-r from-violet-500 to-fuchsia-500 w-[80%] max-h-[100vh] overflow-y-scroll">
         <Routes path="/*">
           <Route path="/bookings" element={<AdminBooking />}></Route>
           <Route path="/rooms" element={<AdminRooms />}></Route>

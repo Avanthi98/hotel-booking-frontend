@@ -9,10 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function AdminCategory() {
   //Get the token from local storage
-  const token=localStorage.getItem("token");
-  console.log(token)
-  if(token==null){
-    window.location.href="/login"
+  const token = localStorage.getItem("token");
+  console.log(token);
+  if (token == null) {
+    window.location.href = "/login";
   }
 
   //Create usestates
@@ -20,7 +20,7 @@ export default function AdminCategory() {
   const [categoryIsLoaded, setCategoryIsLoaded] = useState(false);
 
   //Create a use navigate hook
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   //create useEffects
   useEffect(() => {
@@ -31,40 +31,43 @@ export default function AdminCategory() {
           console.log(res);
           setCategories(res.data.result);
           setCategoryIsLoaded(true);
-        })
-        
+        });
     }
   }, [categoryIsLoaded]);
 
-   //Implementing delete function
-   function handleDelete(name){
-    axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name,{
-      //Check whether the user is an admin or not
-      headers:{
-        Authorization:"Bearer "+token
-      }
-    }).then(
-      (res)=>{
-        toast.success("Category deleted successfully")
-        setCategoryIsLoaded(false),
-        console.log(res)
-      }
-    ).catch(
-      (error)=>{
-        toast.error("Category deletion failed!")
-        console.log(error)
-      }
-    )
+  //Implementing delete function
+  function handleDelete(name) {
+    axios
+      .delete(import.meta.env.VITE_BACKEND_URL + "/api/category/" + name, {
+        //Check whether the user is an admin or not
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+      .then((res) => {
+        toast.success("Category deleted successfully");
+        setCategoryIsLoaded(false), console.log(res);
+      })
+      .catch((error) => {
+        toast.error("Category deletion failed!");
+        console.log(error);
+      });
   }
-  function handlePlusClick(){
+  function handlePlusClick() {
     //window.location.href="/admin/add-category" //-----> Instead of this we can use as following
-    navigate("/admin/add-category")
+    navigate("/admin/add-category");
   }
 
   return (
     <div className="w-full py-6 px-14 flex flex-col">
-    <button className="text-[28px] text-red-900 fixed bottom-6 right-7"
-    onClick={()=>{handlePlusClick()}}><FaCirclePlus /></button>
+      <button
+        className="text-[28px] text-red-900 fixed bottom-6 right-7"
+        onClick={() => {
+          handlePlusClick();
+        }}
+      >
+        <FaCirclePlus />
+      </button>
       <h1 className="text-gray-700 text-2xl font-bold text-center my-4">
         Category Management
       </h1>
@@ -86,7 +89,9 @@ export default function AdminCategory() {
             <th className="px-2 py-2 border-[#343434] border-x-2 border-y-2 w-[175px]">
               Image
             </th>
-            <th className="px-2 py-2 border-[#343434] border-x-2 border-y-2">Action</th>
+            <th className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
+              Action
+            </th>
           </tr>
         </thead>
 
@@ -121,11 +126,21 @@ export default function AdminCategory() {
                 </td>
                 <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
                   <div className="flex items-center justify-center gap-2">
-                  <button className="text-red-600 text-[28px]"
-                  onClick={()=>{handleDelete(category.name)}}><MdDelete /></button>
+                    <button
+                      className="text-red-600 text-[28px]"
+                      onClick={() => {
+                        handleDelete(category.name);
+                      }}
+                    >
+                      <MdDelete />
+                    </button>
 
-                  <button onClick={()=>{}} className="text-blue-700 text-[25px]"
-                  ><MdEditDocument /></button>
+                    <button
+                      onClick={() => {}}
+                      className="text-blue-700 text-[25px]"
+                    >
+                      <MdEditDocument />
+                    </button>
                   </div>
                 </td>
               </tr>

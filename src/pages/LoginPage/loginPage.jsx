@@ -22,7 +22,7 @@ const navigate=useNavigate()
                 console.log(res.data); //print data in console
                 localStorage.setItem("token",res.data.token);//Set data to save in localstorage
                 const token=localStorage.getItem("token")//get saved data from local storage
-                console.log(token);//Print token in console
+                //console.log(token);//Print token in console
 
                 if(res.data.user.type=="customer"){
                     //window.location.href="/";
