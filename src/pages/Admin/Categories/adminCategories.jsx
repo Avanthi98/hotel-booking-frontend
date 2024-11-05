@@ -68,7 +68,7 @@ export default function AdminCategory() {
       >
         <FaCirclePlus />
       </button>
-      <h1 className="text-gray-700 text-2xl font-bold text-center my-4">
+      <h1 className="text-gray-800 text-2xl font-bold text-center my-4">
         Category Management
       </h1>
       <table className="w-full bg-gray-200 border-black border-x-2 border-y-2">

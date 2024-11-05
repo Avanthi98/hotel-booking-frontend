@@ -64,7 +64,7 @@ const rooms = [
 export default function AdminRooms() {//Function name should start with capital letter
   return (
     <div className="w-full p-6">
-      <h1 className="text-2xl font-bold text-center my-4 text-gray-700">
+      <h1 className="text-2xl font-bold text-center my-4 text-gray-800">
         Rooms Management
       </h1>
 

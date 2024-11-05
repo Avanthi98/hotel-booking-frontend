@@ -44,7 +44,7 @@ const feedbacks = [
 export default function AdminFeedback() {
   return (
     <div className="w-full p-6">
-      <h1 className="text-2xl font-bold text-center my-4 text-gray-700">
+      <h1 className="text-2xl font-bold text-center my-4 text-gray-800">
         Feedback Management
       </h1>
 
