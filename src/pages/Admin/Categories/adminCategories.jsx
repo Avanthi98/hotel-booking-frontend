@@ -46,7 +46,8 @@ export default function AdminCategory() {
       })
       .then((res) => {
         toast.success("Category deleted successfully");
-        setCategoryIsLoaded(false), console.log(res);
+        setCategoryIsLoaded(false);
+        console.log(res);
       })
       .catch((error) => {
         toast.error("Category deletion failed!");
