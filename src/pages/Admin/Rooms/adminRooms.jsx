@@ -61,14 +61,15 @@ const rooms = [
   },
 ];
 
-export default function AdminRooms() {//Function name should start with capital letter
+export default function AdminRooms() {
+  //Function name should start with capital letter
   return (
     <div className="w-full p-6">
       <h1 className="text-2xl font-bold text-center my-4 text-gray-800">
         Rooms Management
       </h1>
 
-      <table className="w-full max-h-screen bg-gray-200">
+      <table className="w-full max-h-screen bg-gray-200 text-center">
         <thead className="bg-gray-400 border-black border-x-2 border-y-2">
           <tr className="text-gray-700">
             <th className="px-2 py-2 border-black border-y-2 border-x-2">
