@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
 import { FaCirclePlus } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminGalleryItems() {
   const token = localStorage.getItem("token");
@@ -11,8 +12,13 @@ export default function AdminGalleryItems() {
     window.location.href = "/login";
     return;
   }
+
+  //UseStates
   const [galleryItems, setGalleryItems] = useState([]);
   const [galleryItemIsLoaded, setGalleryItemIsLoaded] = useState(false);
+
+  //UseNavigate
+  const navigate = useNavigate();
 
   //Retrieving data from backend
   useEffect(() => {
@@ -48,10 +54,19 @@ export default function AdminGalleryItems() {
         toast.error("Failed to Delete!");
       });
   }
+  //Handle clicking plus button
+  function handlePlusButton() {
+    navigate("/admin/add-galleryItem");
+  }
 
   return (
     <div className="w-full h-[100vh] flex flex-col px-14 py-6 relative">
-      <button className="text-red-900 text-[28px] fixed right-6 bottom-6">
+      <button
+        className="text-red-900 text-[28px] fixed right-6 bottom-6"
+        onClick={() => {
+          handlePlusButton();
+        }}
+      >
         <FaCirclePlus />
       </button>
 
