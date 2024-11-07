@@ -95,9 +95,9 @@ export default function AdminGalleryItems() {
           </tr>
         </thead>
         <tbody>
-          {galleryItems.map((galleryItem, index) => {
+          {galleryItems.map((galleryItem) => {
             return (
-              <tr key={index}>
+              <tr key={galleryItem.eventId}>
                 <td className="px-2 py-2 border border-x-2 border-y-2 border-[#343434]">
                   {galleryItem.eventId}
                 </td>
