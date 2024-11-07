@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
 import { FaCirclePlus } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminCategory() {
   //Get the token from local storage
@@ -62,7 +62,7 @@ export default function AdminCategory() {
   return (
     <div className="w-full py-6 px-14 flex flex-col">
       <button
-        className="text-[28px] text-red-900 fixed bottom-6 right-7"
+        className="text-[28px] text-pink-900 fixed bottom-6 right-7"
         onClick={() => {
           handlePlusClick();
         }}
@@ -97,8 +97,7 @@ export default function AdminCategory() {
         </thead>
 
         <tbody>
-          {categories.map((category, index) => {
-            return (
+          {categories.map((category,index) => (
               <tr key={index}>
                 <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
                   {category.name}
@@ -127,6 +126,13 @@ export default function AdminCategory() {
                 </td>
                 <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
                   <div className="flex items-center justify-center gap-2">
+                  <Link 
+                    to={"/admin/update-category"}//Link to the update-category page
+                    state={category} //To give current category detail
+                    className="text-blue-700 text-[25px]"
+                    >
+                      <MdEditDocument />
+                    </Link>
                     <button
                       className="text-red-600 text-[28px]"
                       onClick={() => {
@@ -135,18 +141,11 @@ export default function AdminCategory() {
                     >
                       <MdDelete />
                     </button>
-
-                    <button
-                      onClick={() => {}}
-                      className="text-blue-700 text-[25px]"
-                    >
-                      <MdEditDocument />
-                    </button>
                   </div>
                 </td>
               </tr>
-            );
-          })}
+            )
+          )}
         </tbody>
       </table>
     </div>

@@ -38,7 +38,7 @@ export default function AddGalleryItemForm() {
         headers: {
           Authorization: "Bearer " + token,
           "Content-Type": "multipart/form-data",
-        }
+        },
       })
       .then((res) => {
         console.log(res);

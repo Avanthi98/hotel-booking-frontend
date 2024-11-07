@@ -3,13 +3,27 @@ import uploadMedia from "../../../Utils/mediaUpload";
 import { getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function AddCategoryForm() {
-  // Implementing use states
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [features, setFeatures] = useState("");
-  const [description, setDescription] = useState("");
+export default function UpdateCategoryForm() {
+
+  //Use Navigation Hook
+  const navigate=useNavigate()
+
+  //Implementing useLocation Hook
+  const location = useLocation();
+  console.log(location.state); //-->If you want to print the state
+
+  //If state is null
+  if (location.state == null) {
+    window.location.href = "/admin/categories";
+  }
+
+  // Implementing use states and loading relevat previous category state from using useLocation hook
+  const [name, setName] = useState(location.state.name);
+  const [price, setPrice] = useState(location.state.price);
+  const [features, setFeatures] = useState(location.state.features.join(",")); //To print const array=[a,b,c,d]--->"a,b,c,d"-->array.join(",")
+  const [description, setDescription] = useState(location.state.description);
   const [image, setImage] = useState(null);
   const [isloading, setIsLoading] = useState(false); //Create a usestate to check whether button is loading or not
 
@@ -35,39 +49,66 @@ export default function AddCategoryForm() {
     const featuresArray = features.split(",");
     console.log(featuresArray);
 
-    const categoryInfo = {
-      name: name,
-      description: description,
-      price: price,
-      features: featuresArray,
-      image: image,
-    };
+    //Check whether image has been updated or not
+    if (image == null) {//This means image is not updated
+      const categoryInfo = {
+        description: description,
+        price: price,
+        features: featuresArray,
+        image: location.state.image,//Previous image
+      };
+      axios
+        .put(import.meta.env.VITE_BACKEND_URL + "/api/category/"+name, categoryInfo, {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          toast.success("Category updated successfully!");
+          setIsLoading(false);
+          navigate("/admin/categories")
 
-    axios
-      .post(import.meta.env.VITE_BACKEND_URL + "/api/category", categoryInfo, {
-        headers: {
-          Authorization: "Bearer " + token,
-        }
-      })
-      .then(
-        (result) => {
-      console.log(result)
-      toast.success("Category added successfully!")
-        setIsLoading(false);
-      }).catch((error) => {
-        console.log(error);
-        toast.error("Category creation failed!");
-      });
-
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Category updation failed!");
+        });
+    }
+else{
+    //This part will be run when you update the image as well
     /*uploadMedia(image).then(
         (snapshot)=>{
-            getDownloadURL(snapshot.ref).then((url)=>{
-               
-               
-                
+        getDownloadURL(snapshot.ref).then((url)=>{*/
+        const categoryInfo = {
+            description: description,
+            price: price,
+            features: featuresArray,
+            image: image,
+          };
+      
+          /*        })
+              }
+          )*/
+      
+          axios
+            .put(import.meta.env.VITE_BACKEND_URL + "/api/category/"+name, categoryInfo, {
+              headers: {
+                Authorization: "Bearer " + token,
+              },
             })
-        }
-    )*/
+            .then((res) => {
+              console.log(res);
+              setIsLoading(false);
+              toast.success("Category updated successfully!");
+              navigate("/admin/categories")
+            })
+            .catch((error) => {
+              console.log(error);
+              toast.error("Category updation failed!");
+            });
+}
+    
   }
 
   return (
@@ -84,6 +125,7 @@ export default function AddCategoryForm() {
             className="w-[400px] h-7 mb-2 rounded-sm border border-gray-400 px-4"
             type="text"
             required
+            disabled //To avoid updation and get fixed the value
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -129,7 +171,7 @@ export default function AddCategoryForm() {
               {isloading ? (
                 <div className="w-[20px] h-[20px] border-t border-white border-dotted border-2 rounded-full animate-spin ml-3"></div>
               ) : (
-                <span>Add Category</span>
+                <span>Update Category</span>
               )}
             </button>
           </div>
