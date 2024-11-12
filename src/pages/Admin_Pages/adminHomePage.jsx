@@ -17,6 +17,7 @@ import AdminGalleryItems from "../Admin/GalleryItems/adminGalleryItems";
 import AddCategoryForm from "../Admin/addCategoryForm/addCategoryForm";
 import AddGalleryItemForm from "../Admin/addGalleryItemForm/addGalleryItemForm";
 import UpdateCategoryForm from "../Admin/updateCategoryForm/updateCategory";
+import UpdateGalleryItemForm from "../Admin/updateGalleryItemForm/updateGalleryItemForm";
 
 
 export default function AdminPage() {
@@ -50,7 +51,7 @@ export default function AdminPage() {
 
         <div className=" text-white font-bold text-[20px] hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2">
           <GrGallery />
-          <Link to="/admin/galleryitems ">Gallery Items</Link>
+          <Link to="/admin/gallery-items ">Gallery Items</Link>
         </div>
       </div>
 
@@ -63,8 +64,9 @@ export default function AdminPage() {
           <Route path="/update-category" element={<UpdateCategoryForm/>}></Route>
           <Route path="/users" element={<AdminUsers />}></Route>
           <Route path="/feedbacks" element={<AdminFeedback />}></Route>
-          <Route path="/galleryitems" element={<AdminGalleryItems />}></Route>
+          <Route path="/gallery-items" element={<AdminGalleryItems />}></Route>
           <Route path="/add-galleryItem" element={<AddGalleryItemForm/>}></Route>
+          <Route path="/update-galleryItem" element={<UpdateGalleryItemForm/>}></Route>
         </Routes>
       </div>
     </div>

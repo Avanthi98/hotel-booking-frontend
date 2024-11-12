@@ -128,7 +128,7 @@ export default function AdminCategory() {
                   <div className="flex items-center justify-center gap-2">
                   <Link 
                     to={"/admin/update-category"}//Link to the update-category page
-                    state={category} //To give current category detail
+                    state={category} //To carry out current category details
                     className="text-blue-700 text-[25px]"
                     >
                       <MdEditDocument />

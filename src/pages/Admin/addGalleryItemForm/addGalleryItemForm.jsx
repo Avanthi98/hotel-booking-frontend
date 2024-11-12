@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddGalleryItemForm() {
   //Implementing UseStates
-  const [eventId, setEventId] = useState("");
+  //const [eventId, setEventId] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
@@ -27,7 +27,7 @@ export default function AddGalleryItemForm() {
     setIsLoading(true);
 
     const eventInfo = {
-      eventId:eventId,
+      //eventId:eventId,
       name:name,
       image:image,
       description:description
@@ -37,13 +37,14 @@ export default function AddGalleryItemForm() {
       .post(import.meta.env.VITE_BACKEND_URL + "/api/gallery", eventInfo, {
         headers: {
           Authorization: "Bearer " + token,
-          "Content-Type": "multipart/form-data",
+         // "Content-Type": "multipart/form-data",
         },
       })
       .then((res) => {
         console.log(res);
         toast.success("Gallery Event Successfully Created!");
         setIsLoading(false);
+        navigate("/admin/gallery-items")
       })
       .catch((error) => {
         console.log(error);
@@ -53,12 +54,12 @@ export default function AddGalleryItemForm() {
 
   return (
     <div className="w-full h-[100vh] flex items-center justify-center p-6">
-      <div className="w-[500px] h-[550px] bg-white flex items-center justify-center rounded-md">
+      <div className="w-[500px] h-[500px] bg-white flex items-center justify-center rounded-md">
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <h1 className="text-[18px] text-gray-700 font-semibold text-center m-5">
             Enter Gallery Event Details Here:
           </h1>
-          <label className="text-gray-700">Event ID:</label>
+          {/* <label className="text-gray-700">Event ID:</label>
           <input
             type="text"
             className="w-[400px] h-7 mb-2 px-4 border border-gray-400"
@@ -66,11 +67,11 @@ export default function AddGalleryItemForm() {
             value={eventId}
             onChange={(e) => setEventId(e.target.value)
             }
-          ></input>
+          ></input> */}
           <label className="text-gray-700">Event Name:</label>
           <input
             type="text"
-            className="w-[400px] h-7 mb-2 px-4 border border-gray-400"
+            className="w-[400px] h-7 mb-3 px-4 border border-gray-400"
             required
             value={name}
             onChange={(e) => setName(e.target.value)
@@ -79,13 +80,13 @@ export default function AddGalleryItemForm() {
           <label className="text-gray-700">Image:</label>
           <input
             type="file"
-            className="w-[400px] h-20 mb-2 px-4 py-5 border border-gray-400 flex items-center"
+            className="w-[400px] h-20 mb-3 px-4 py-5 border border-gray-400 flex items-center"
             //onChange={handleImageChange}
           ></input>
           <label className="text-gray-700">Description:</label>
           <input
             type="text"
-            className="w-[400px] h-16 mb-2 px-4 border border-gray-400"
+            className="w-[400px] h-16 mb-3 px-4 border border-gray-400"
             value={description}
             onChange={(e) => setDescription(e.target.value)
             }
