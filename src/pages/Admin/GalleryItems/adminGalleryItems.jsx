@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
 import { FaCirclePlus } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminGalleryItems() {
   const token = localStorage.getItem("token");
@@ -101,13 +101,18 @@ export default function AdminGalleryItems() {
                 <td className="px-2 py-2 border border-x-2 border-y-2 border-[#343434]">
                   {galleryItem.eventId}
                 </td>
-                <td className="px-2 py-2 border border-x-2 border-y-2 border-[#343434]">
+                <td className="px-2 py-2 w-[200px] border border-x-2 border-y-2 border-[#343434]">
                   {galleryItem.name}
                 </td>
-                <td className="px-2 py-2 border border-x-2 border-y-2 border-[#343434]">
-                  {galleryItem.image}
+                <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
+                  <div className="flex  items-center justify-center">
+                    <img
+                      className="w-[100px] h-[90px] border-x border-y border-[#343434] rounded "
+                      src={galleryItem.image}
+                    />
+                  </div>
                 </td>
-                <td className="px-2 py-2 border border-x-2 border-y-2 border-[#343434]">
+                <td className="px-2 py-2 w-[300px] border border-x-2 border-y-2 border-[#343434]">
                   {galleryItem.description}
                 </td>
                 <td className="px-2 py-2 border border-x-2 border-y-2 border-[#343434]">
@@ -120,14 +125,13 @@ export default function AdminGalleryItems() {
                     >
                       <MdDelete />
                     </button>
-                    <button
-                      className="text-[25px] text-blue-700"
-                      onClick={() => {
-                        handleUpdate;
-                      }}
+                    <Link 
+                    to={"/admin/update-galleryItem"}
+                    state={galleryItem}
+                    className="text-[25px] text-blue-700"
                     >
                       <MdEditDocument />
-                    </button>
+                    </Link>
                   </div>
                 </td>
               </tr>

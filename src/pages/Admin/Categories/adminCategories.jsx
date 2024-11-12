@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function AdminCategory() {
   //Get the token from local storage
   const token = localStorage.getItem("token");
-  console.log(token);
+  //console.log(token);
   if (token == null) {
     window.location.href = "/login";
   }
@@ -119,7 +119,7 @@ export default function AdminCategory() {
                 <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
                   <div className="flex  items-center justify-center">
                     <img
-                      className="w-[80px] h-[80px] border-x border-y border-[#343434] rounded "
+                      className="w-[100px] h-[90px] border-x border-y border-[#343434] rounded "
                       src={category.image}
                     />
                   </div>

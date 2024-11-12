@@ -20,11 +20,11 @@ export default function AddCategoryForm() {
     window.location.href("/login");
   }
 
-  /* // Handler for image selection
+  // Handler for image selection
   const handleImageChange = (e) => {
       setImage(e.target.files[0]);
     
-  };*/
+  };
 
   // Handler for form submission
   function handleSubmit(e) {
@@ -35,39 +35,37 @@ export default function AddCategoryForm() {
     const featuresArray = features.split(",");
     console.log(featuresArray);
 
-    const categoryInfo = {
-      name: name,
-      description: description,
-      price: price,
-      features: featuresArray,
-      image: image,
-    };
-
-    axios
-      .post(import.meta.env.VITE_BACKEND_URL + "/api/category", categoryInfo, {
-        headers: {
-          Authorization: "Bearer " + token,
-        }
-      })
-      .then(
-        (result) => {
-      console.log(result)
-      toast.success("Category added successfully!")
-        setIsLoading(false);
-      }).catch((error) => {
-        console.log(error);
-        toast.error("Category creation failed!");
-      });
-
-    /*uploadMedia(image).then(
-        (snapshot)=>{
-            getDownloadURL(snapshot.ref).then((url)=>{
-               
-               
-                
+    uploadMedia(image).then(
+      (snapshot)=>{
+          getDownloadURL(snapshot.ref).then((url)=>{
+            const categoryInfo = {
+              name: name,
+              description: description,
+              price: price,
+              features: featuresArray,
+              image: url,
+            };
+            axios
+            .post(import.meta.env.VITE_BACKEND_URL + "/api/category", categoryInfo, {
+              headers: {
+                Authorization: "Bearer " + token,
+              }
             })
-        }
-    )*/
+            .then(
+              (result) => {
+            console.log(result)
+            toast.success("Category added successfully!")
+              setIsLoading(false);
+            }).catch((error) => {
+              console.log(error);
+              toast.error("Category creation failed!");
+            });
+      
+              
+          })
+      }
+  )
+   
   }
 
   return (
@@ -118,7 +116,7 @@ export default function AddCategoryForm() {
           <input
             className="w-[400px] h-20 mb-2 rounded-sm border border-gray-400 px-4 py-5"
             type="file"
-            // onChange={handleImageChange}
+            onChange={handleImageChange}
           />
 
           <div className="flex justify-center my-3">

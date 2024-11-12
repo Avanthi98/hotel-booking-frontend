@@ -6,9 +6,8 @@ import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function UpdateCategoryForm() {
-
   //Use Navigation Hook
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   //Implementing useLocation Hook
   const location = useLocation();
@@ -34,11 +33,10 @@ export default function UpdateCategoryForm() {
     window.location.href("/login");
   }
 
-  /* // Handler for image selection
+  // Handler for image selection
   const handleImageChange = (e) => {
-      setImage(e.target.files[0]);
-    
-  };*/
+    setImage(e.target.files[0]);
+  };
 
   // Handler for form submission
   function handleSubmit(e) {
@@ -50,65 +48,68 @@ export default function UpdateCategoryForm() {
     console.log(featuresArray);
 
     //Check whether image has been updated or not
-    if (image == null) {//This means image is not updated
+    if (image == null) {
+      //This means image is not updated
       const categoryInfo = {
         description: description,
         price: price,
         features: featuresArray,
-        image: location.state.image,//Previous image
+        image: location.state.image, //Previous image
       };
       axios
-        .put(import.meta.env.VITE_BACKEND_URL + "/api/category/"+name, categoryInfo, {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        })
+        .put(
+          import.meta.env.VITE_BACKEND_URL + "/api/category/" + name,
+          categoryInfo,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        )
         .then((res) => {
           console.log(res);
           toast.success("Category updated successfully!");
           setIsLoading(false);
-          navigate("/admin/categories")
-
+          navigate("/admin/categories");
         })
         .catch((error) => {
           console.log(error);
           toast.error("Category updation failed!");
         });
-    }
-else{
-    //This part will be run when you update the image as well
-    /*uploadMedia(image).then(
-        (snapshot)=>{
-        getDownloadURL(snapshot.ref).then((url)=>{*/
-        const categoryInfo = {
+    } else {
+      //This part will be run when you update the image as well
+      uploadMedia(image).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          const categoryInfo = {
             description: description,
             price: price,
             features: featuresArray,
-            image: image,
+            image: url,
           };
-      
-          /*        })
-              }
-          )*/
-      
+
           axios
-            .put(import.meta.env.VITE_BACKEND_URL + "/api/category/"+name, categoryInfo, {
-              headers: {
-                Authorization: "Bearer " + token,
-              },
-            })
+            .put(
+              import.meta.env.VITE_BACKEND_URL + "/api/category/" + name,
+              categoryInfo,
+              {
+                headers: {
+                  Authorization: "Bearer " + token,
+                },
+              }
+            )
             .then((res) => {
               console.log(res);
               setIsLoading(false);
               toast.success("Category updated successfully!");
-              navigate("/admin/categories")
+              navigate("/admin/categories");
             })
             .catch((error) => {
               console.log(error);
               toast.error("Category updation failed!");
             });
-}
-    
+        });
+      });
+    }
   }
 
   return (
@@ -160,7 +161,7 @@ else{
           <input
             className="w-[400px] h-20 mb-2 rounded-sm border border-gray-400 px-4 py-5"
             type="file"
-            // onChange={handleImageChange}
+            onChange={handleImageChange}
           />
 
           <div className="flex justify-center my-3">

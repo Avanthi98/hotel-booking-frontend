@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import uploadMedia from "../../../Utils/mediaUpload";
+import { getDownloadURL } from "firebase/storage";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export default function AddGalleryItemForm() {
   //Implementing UseStates
-  //const [eventId, setEventId] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
@@ -22,34 +23,43 @@ export default function AddGalleryItemForm() {
     navigate("/login");
   }
 
+  // Handler for image selection
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  // Handler for form submission
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
 
-    const eventInfo = {
-      //eventId:eventId,
-      name:name,
-      image:image,
-      description:description
-    };
+    uploadMedia(image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        const eventInfo = {
+          name: name,
+          image: url,
+          description: description,
+        };
 
-    axios
-      .post(import.meta.env.VITE_BACKEND_URL + "/api/gallery", eventInfo, {
-        headers: {
-          Authorization: "Bearer " + token,
-         // "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        toast.success("Gallery Event Successfully Created!");
-        setIsLoading(false);
-        navigate("/admin/gallery-items")
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Gallery Event Creation Failed!");
+        axios
+          .post(import.meta.env.VITE_BACKEND_URL + "/api/gallery", eventInfo, {
+            headers: {
+              Authorization: "Bearer " + token,
+              // "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((res) => {
+            console.log(res);
+            toast.success("Gallery Event Successfully Created!");
+            setIsLoading(false);
+            navigate("/admin/gallery-items");
+          })
+          .catch((error) => {
+            console.log(error);
+            toast.error("Gallery Event Creation Failed!");
+          });
       });
+    });
   }
 
   return (
@@ -59,37 +69,27 @@ export default function AddGalleryItemForm() {
           <h1 className="text-[18px] text-gray-700 font-semibold text-center m-5">
             Enter Gallery Event Details Here:
           </h1>
-          {/* <label className="text-gray-700">Event ID:</label>
-          <input
-            type="text"
-            className="w-[400px] h-7 mb-2 px-4 border border-gray-400"
-            required
-            value={eventId}
-            onChange={(e) => setEventId(e.target.value)
-            }
-          ></input> */}
+
           <label className="text-gray-700">Event Name:</label>
           <input
             type="text"
             className="w-[400px] h-7 mb-3 px-4 border border-gray-400"
             required
             value={name}
-            onChange={(e) => setName(e.target.value)
-            }
+            onChange={(e) => setName(e.target.value)}
           ></input>
           <label className="text-gray-700">Image:</label>
           <input
             type="file"
             className="w-[400px] h-20 mb-3 px-4 py-5 border border-gray-400 flex items-center"
-            //onChange={handleImageChange}
+            onChange={handleImageChange}
           ></input>
           <label className="text-gray-700">Description:</label>
           <input
             type="text"
             className="w-[400px] h-16 mb-3 px-4 border border-gray-400"
             value={description}
-            onChange={(e) => setDescription(e.target.value)
-            }
+            onChange={(e) => setDescription(e.target.value)}
           ></input>
 
           <div className="flex justify-center my-3">
