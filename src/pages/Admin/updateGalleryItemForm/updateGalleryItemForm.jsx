@@ -110,7 +110,7 @@ export default function UpdateGalleryItemForm() {
   }
 
   return (
-    <div className="w-full flex h-[100vh] p-6 justify-center items-center">
+    <div className="w-full flex h-[100vh] p-6 mb-4 justify-center items-center">
       <div className="w-[500px] h-[550px] bg-white rounded-md flex flex-col items-center justify-center">
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <h1 className="text-[18px] text-gray-700 font-semibold text-center m-5">
