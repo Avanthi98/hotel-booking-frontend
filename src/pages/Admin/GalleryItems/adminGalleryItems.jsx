@@ -60,7 +60,7 @@ export default function AdminGalleryItems() {
   }
 
   return (
-    <div className="w-full h-[100vh] flex flex-col px-14 py-6 relative">
+    <div className="w-full flex flex-col px-14 py-6 relative">
       <button
         className="text-red-900 text-[28px] fixed right-6 bottom-6"
         onClick={() => {
