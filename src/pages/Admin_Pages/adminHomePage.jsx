@@ -19,7 +19,6 @@ import AddGalleryItemForm from "../Admin/addGalleryItemForm/addGalleryItemForm";
 import UpdateCategoryForm from "../Admin/updateCategoryForm/updateCategory";
 import UpdateGalleryItemForm from "../Admin/updateGalleryItemForm/updateGalleryItemForm";
 
-
 export default function AdminPage() {
   return (
     <div className=" w-full max-h-[100vh] overflow-hidden flex">
@@ -55,18 +54,27 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-purple-500 to-blue-400 w-[80%] max-h-[100vh] overflow-y-scroll">
+      <div className="bg-gradient-to-r from-purple-500 to-blue-700 w-[80%] max-h-[100vh] overflow-y-scroll">
         <Routes path="/*">
           <Route path="/bookings" element={<AdminBooking />}></Route>
           <Route path="/rooms" element={<AdminRooms />}></Route>
           <Route path="/categories" element={<AdminCategory />}></Route>
-          <Route path="/add-category" element={<AddCategoryForm/>}></Route>
-          <Route path="/update-category" element={<UpdateCategoryForm/>}></Route>
+          <Route path="/add-category" element={<AddCategoryForm />}></Route>
+          <Route
+            path="/update-category"
+            element={<UpdateCategoryForm />}
+          ></Route>
           <Route path="/users" element={<AdminUsers />}></Route>
           <Route path="/feedbacks" element={<AdminFeedback />}></Route>
           <Route path="/gallery-items" element={<AdminGalleryItems />}></Route>
-          <Route path="/add-galleryItem" element={<AddGalleryItemForm/>}></Route>
-          <Route path="/update-galleryItem" element={<UpdateGalleryItemForm/>}></Route>
+          <Route
+            path="/add-galleryItem"
+            element={<AddGalleryItemForm />}
+          ></Route>
+          <Route
+            path="/update-galleryItem"
+            element={<UpdateGalleryItemForm />}
+          ></Route>
         </Routes>
       </div>
     </div>
