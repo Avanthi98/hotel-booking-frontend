@@ -3,10 +3,9 @@ import HomePage from "./pages/Client_Pages/ClientHomePage/homePage";
 import AdminPage from "./pages/Admin_Pages/adminHomePage";
 import TestComponent from "./Components/Test/testComponent";
 import LoginPage from "./pages/LoginPage/loginPage";
-import SignUpPage from "./pages/SignUpPage/signUpPage";
 import CategoriesPage from "./pages/Client_Pages/ClientPages/categories";
 import { Toaster } from "react-hot-toast";
-import AddCategoryForm from "./pages/Admin/addCategoryForm/addCategoryForm";
+
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/test" element={<TestComponent />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/signup" element={<SignUpPage />}></Route>
         <Route path="/categories" element={<CategoriesPage />}></Route>
         
       </Routes>
