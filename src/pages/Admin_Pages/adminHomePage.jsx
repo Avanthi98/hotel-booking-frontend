@@ -54,7 +54,7 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-purple-500 to-blue-700 w-[80%] max-h-[100vh] overflow-y-scroll">
+      <div className="bg-gradient-to-r from-purple-500 to-blue-500 w-[80%] max-h-[100vh] overflow-y-scroll">
         <Routes path="/*">
           <Route path="/bookings" element={<AdminBooking />}></Route>
           <Route path="/rooms" element={<AdminRooms />}></Route>
