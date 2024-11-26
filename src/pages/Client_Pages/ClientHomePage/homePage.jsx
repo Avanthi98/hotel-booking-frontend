@@ -28,7 +28,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex items-center justify-center mt-4 mb-4 lg:mt-0 lg:mb-6">
-              <button className=" bg-purple-600 p-2 border border-purple-700 rounded-md text-white font-semibold hover:bg-purple-900">
+              <button className=" bg-purple-700 p-2 border border-purple-700 rounded-md text-white font-semibold hover:bg-purple-950">
                 Book Now
               </button>
             </div>
