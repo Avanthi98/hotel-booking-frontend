@@ -11,13 +11,13 @@ import { GrGallery } from "react-icons/gr";
 import AdminBooking from "../Admin/Booking/adminBooking";
 import AdminCategory from "../Admin/Categories/adminCategories";
 import AdminFeedback from "../Admin/Feedbacks/adminFeedbacks";
-import AdminRooms from "../Admin/Rooms/adminRooms";
 import AdminUsers from "../Admin/Users/adminUsers";
 import AdminGalleryItems from "../Admin/GalleryItems/adminGalleryItems";
 import AddCategoryForm from "../Admin/addCategoryForm/addCategoryForm";
 import AddGalleryItemForm from "../Admin/addGalleryItemForm/addGalleryItemForm";
 import UpdateCategoryForm from "../Admin/updateCategoryForm/updateCategory";
 import UpdateGalleryItemForm from "../Admin/updateGalleryItemForm/updateGalleryItemForm";
+import AdminRooms from "../Admin/Rooms/adminRooms";
 
 export default function AdminPage() {
   return (
@@ -66,7 +66,7 @@ export default function AdminPage() {
       <div className="bg-gradient-to-r from-purple-500 to-blue-500 w-[80%] max-h-[100vh] overflow-y-scroll">
         <Routes path="/*">
           <Route path="/bookings" element={<AdminBooking />}></Route>
-          <Route path="/rooms" element={<AdminRooms />}></Route>
+          <Route path="/rooms" element={<AdminRooms/>}></Route>
           <Route path="/categories" element={<AdminCategory />}></Route>
           <Route path="/add-category" element={<AddCategoryForm />}></Route>
           <Route
