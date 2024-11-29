@@ -21,15 +21,19 @@ import UpdateGalleryItemForm from "../Admin/updateGalleryItemForm/updateGalleryI
 
 export default function AdminPage() {
   return (
-    
     <div className=" w-full max-h-[100vh] overflow-hidden flex">
       <div className="bg-gradient-to-b from-purple-700 to-fuchsia-600 lg:w-[20%] h-[100vh] flex flex-col justify-center items-center gap-3">
-      <div className="flex flex-col items-center">
-        <img src="https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-173524.jpg" className="border w-[70px] h-[70px] lg:w-[90px] lg:h-[90px] rounded-full"></img>
-        <p className="text-white lg:text-[20px] font-bold text-center py-2">Welcome to the admin panel!</p>
-      </div>
+        <div className="flex flex-col items-center">
+          <img
+            src="https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-173524.jpg"
+            className="border w-[70px] h-[70px] lg:w-[90px] lg:h-[90px] rounded-full"
+          ></img>
+          <p className="text-white lg:text-[20px] font-bold text-center py-2">
+            Welcome to the admin panel!
+          </p>
+        </div>
         <div className="text-white lg:text-[20px]  font-bold hover:text-gray-300 hover:font-bold cursor-pointer flex items-center gap-2 border-2 pl-5 rounded-md w-[160px] lg:w-[200px] lg:p-2">
-          <BsBookmarkCheck/>
+          <BsBookmarkCheck />
           <Link to="/admin/bookings ">Bookings</Link>
         </div>
 
