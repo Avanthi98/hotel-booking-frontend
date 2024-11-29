@@ -60,7 +60,7 @@ export default function AdminCategory() {
   }
 
   return (
-    <div className="w-full py-6 px-14 flex flex-col">
+    <div div className="w-full p-6 min-h-screen">
       <button
         className="text-[28px] text-pink-900 fixed bottom-6 right-7"
         onClick={() => {
@@ -117,9 +117,9 @@ export default function AdminCategory() {
                 </td>
 
                 <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
-                  <div className="flex  items-center justify-center">
+                  <div className="flex items-center justify-center">
                     <img
-                      className="w-[100px] h-[90px] border-x border-y border-[#343434] rounded "
+                      className="w-[90px] h-[90px] border-x border-y border-[#343434] rounded "
                       src={category.image}
                     />
                   </div>

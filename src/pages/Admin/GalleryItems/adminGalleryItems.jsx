@@ -60,7 +60,7 @@ export default function AdminGalleryItems() {
   }
 
   return (
-    <div className="w-full flex flex-col px-14 py-6 relative">
+    <div div className="w-full p-6 min-h-screen">
       <button
         className="text-red-900 text-[28px] fixed right-6 bottom-6"
         onClick={() => {
@@ -125,10 +125,10 @@ export default function AdminGalleryItems() {
                     >
                       <MdDelete />
                     </button>
-                    <Link 
-                    to={"/admin/update-galleryItem"}
-                    state={galleryItem}
-                    className="text-[25px] text-blue-700"
+                    <Link
+                      to={"/admin/update-galleryItem"}
+                      state={galleryItem}
+                      className="text-[25px] text-blue-700"
                     >
                       <MdEditDocument />
                     </Link>

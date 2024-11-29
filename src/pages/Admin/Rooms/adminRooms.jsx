@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
-import { FaCirclePlus } from "react-icons/fa6";
+import { FiPlusCircle } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminRooms() {
@@ -23,13 +23,11 @@ export default function AdminRooms() {
   // Create useEffect
   useEffect(() => {
     if (!roomsAreLoaded) {
-      axios
-        .get(import.meta.env.VITE_BACKEND_URL + "/api/room")
-        .then((res) => {
-          console.log(res);
-          setRooms(res.data.roomList);
-          setRoomsAreLoaded(true);
-        });
+      axios.get(import.meta.env.VITE_BACKEND_URL + "/api/room").then((res) => {
+        console.log(res);
+        setRooms(res.data.roomList);
+        setRoomsAreLoaded(true);
+      });
     }
   }, [roomsAreLoaded]);
 
@@ -52,20 +50,20 @@ export default function AdminRooms() {
       });
   }
 
-  /*function handlePlusClick() {
+  function handlePlusClick() {
     navigate("/admin/add-room");
-  }*/
+  }
 
   return (
     <div className="w-full p-6 min-h-screen">
-      {/* <button
-        className="text-[28px] text-pink-900 fixed bottom-6 right-7"
+      <button
+        className="bg-purple-400 rounded-full text-[30px] text-purple-950 fixed top-6 right-6"
         onClick={() => {
           handlePlusClick();
         }}
       >
-        <FaCirclePlus />
-      </button> */}
+       <FiPlusCircle />
+      </button>
       <h1 className="text-gray-800 text-2xl font-bold text-center my-4">
         Room Management
       </h1>
@@ -133,13 +131,13 @@ export default function AdminRooms() {
               </td>
               <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
                 <div className="flex items-center justify-center gap-2">
-                  {/* <Link
+                  <Link
                     to={"/admin/update-room"}
                     state={room}
                     className="text-blue-700 text-[25px]"
                   >
                     <MdEditDocument />
-                  </Link> */}
+                  </Link>
                   <button
                     className="text-red-600 text-[28px]"
                     onClick={() => {
