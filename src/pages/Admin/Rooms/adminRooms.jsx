@@ -112,12 +112,12 @@ export default function AdminRooms() {
               <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
                 {room.maxNoOfGuests}
               </td>
-              <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
+              <td className="w-[130px] px-3 py-2 border-[#343434] border-x-2 border-y-2">
                 <div className="flex flex-wrap gap-2 justify-center">
                   {room.photos.map((photo, i) => (
                     <img
                       key={i}
-                      className="w-[80px] h-[80px] border-x border-y border-[#343434] rounded"
+                      className="w-[100px] h-[90px] border-x border-y border-[#343434] rounded"
                       src={photo}
                     />
                   ))}

@@ -19,6 +19,7 @@ import UpdateCategoryForm from "../Admin/updateCategoryForm/updateCategory";
 import UpdateGalleryItemForm from "../Admin/updateGalleryItemForm/updateGalleryItemForm";
 import AdminRooms from "../Admin/Rooms/adminRooms";
 import AddRoomForm from "../Admin/addRoomForm/addRoomForm";
+import UpdateRoomForm from "../Admin/updateRoomForm/updateRoomForm";
 
 export default function AdminPage() {
   return (
@@ -69,6 +70,7 @@ export default function AdminPage() {
           <Route path="/bookings" element={<AdminBooking />}></Route>
           <Route path="/rooms" element={<AdminRooms/>}></Route>
           <Route path="/add-room" element={<AddRoomForm/>}></Route>
+          <Route path="/update-room" element={<UpdateRoomForm/>}></Route>
           <Route path="/categories" element={<AdminCategory />}></Route>
           <Route path="/add-category" element={<AddCategoryForm />}></Route>
           <Route
