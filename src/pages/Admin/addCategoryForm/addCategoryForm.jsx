@@ -22,8 +22,7 @@ export default function AddCategoryForm() {
 
   // Handler for image selection
   const handleImageChange = (e) => {
-      setImage(e.target.files[0]);
-    
+    setImage(e.target.files[0]);
   };
 
   // Handler for form submission
@@ -35,41 +34,40 @@ export default function AddCategoryForm() {
     const featuresArray = features.split(",");
     console.log(featuresArray);
 
-    uploadMedia(image).then(
-      (snapshot)=>{
-          getDownloadURL(snapshot.ref).then((url)=>{
-            const categoryInfo = {
-              name: name,
-              description: description,
-              price: price,
-              features: featuresArray,
-              image: url,
-            };
-            axios
-            .post(import.meta.env.VITE_BACKEND_URL + "/api/category", categoryInfo, {
+    uploadMedia(image).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        const categoryInfo = {
+          name: name,
+          description: description,
+          price: price,
+          features: featuresArray,
+          image: url,
+        };
+        axios
+          .post(
+            import.meta.env.VITE_BACKEND_URL + "/api/category",
+            categoryInfo,
+            {
               headers: {
                 Authorization: "Bearer " + token,
-              }
-            })
-            .then(
-              (result) => {
-            console.log(result)
-            toast.success("Category added successfully!")
-              setIsLoading(false);
-            }).catch((error) => {
-              console.log(error);
-              toast.error("Category creation failed!");
-            });
-      
-              
+              },
+            }
+          )
+          .then((result) => {
+            console.log(result);
+            toast.success("Category added successfully!");
+            setIsLoading(false);
           })
-      }
-  )
-   
+          .catch((error) => {
+            console.log(error);
+            toast.error("Category creation failed!");
+          });
+      });
+    });
   }
 
   return (
-    <div className="w-full flex h-[100vh] p-6 justify-center">
+    <div className="w-full flex h-full p-6 justify-center">
       <div className="w-[500px] bg-white rounded-md flex flex-col items-center justify-center">
         {/*This form can submit either using onSubmit function for form tag or using onClick function for button */}
         <form className="flex flex-col" onSubmit={handleSubmit}>

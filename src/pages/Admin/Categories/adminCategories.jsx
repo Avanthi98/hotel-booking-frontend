@@ -4,7 +4,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
-import { FaCirclePlus } from "react-icons/fa6";
+import { FiPlusCircle } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminCategory() {
@@ -62,12 +62,12 @@ export default function AdminCategory() {
   return (
     <div div className="w-full p-6 min-h-screen">
       <button
-        className="text-[28px] text-pink-900 fixed bottom-6 right-7"
+        className="bg-blue-300 rounded-full text-[30px] text-blue-900 fixed top-6 right-6"
         onClick={() => {
           handlePlusClick();
         }}
       >
-        <FaCirclePlus />
+        <FiPlusCircle />
       </button>
       <h1 className="text-gray-800 text-2xl font-bold text-center my-4">
         Category Management
@@ -97,55 +97,54 @@ export default function AdminCategory() {
         </thead>
 
         <tbody>
-          {categories.map((category,index) => (
-              <tr key={index}>
-                <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
-                  {category.name}
-                </td>
-                <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
-                  {category.description}
-                </td>
-                <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
-                  {category.price.toLocaleString("en-LK")}
-                </td>
-                <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
-                  <ul>
-                    {category.features.map((feature, i) => {
-                      return <li key={i}>{feature}</li>;
-                    })}
-                  </ul>
-                </td>
+          {categories.map((category, index) => (
+            <tr key={index}>
+              <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
+                {category.name}
+              </td>
+              <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
+                {category.description}
+              </td>
+              <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
+                {category.price.toLocaleString("en-LK")}
+              </td>
+              <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2 text-center">
+                <ul>
+                  {category.features.map((feature, i) => {
+                    return <li key={i}>{feature}</li>;
+                  })}
+                </ul>
+              </td>
 
-                <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
-                  <div className="flex items-center justify-center">
-                    <img
-                      className="w-[90px] h-[90px] border-x border-y border-[#343434] rounded "
-                      src={category.image}
-                    />
-                  </div>
-                </td>
-                <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
-                  <div className="flex items-center justify-center gap-2">
-                  <Link 
-                    to={"/admin/update-category"}//Link to the update-category page
+              <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
+                <div className="flex items-center justify-center">
+                  <img
+                    className="w-[90px] h-[90px] border-x border-y border-[#343434] rounded "
+                    src={category.image}
+                  />
+                </div>
+              </td>
+              <td className="px-2 py-2 border-[#343434] border-x-2 border-y-2">
+                <div className="flex items-center justify-center gap-2">
+                  <Link
+                    to={"/admin/update-category"} //Link to the update-category page
                     state={category} //To carry out current category details
                     className="text-blue-700 text-[25px]"
-                    >
-                      <MdEditDocument />
-                    </Link>
-                    <button
-                      className="text-red-600 text-[28px]"
-                      onClick={() => {
-                        handleDelete(category.name);
-                      }}
-                    >
-                      <MdDelete />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            )
-          )}
+                  >
+                    <MdEditDocument />
+                  </Link>
+                  <button
+                    className="text-red-600 text-[28px]"
+                    onClick={() => {
+                      handleDelete(category.name);
+                    }}
+                  >
+                    <MdDelete />
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

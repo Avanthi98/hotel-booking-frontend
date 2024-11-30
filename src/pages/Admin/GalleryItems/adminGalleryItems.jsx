@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
-import { FaCirclePlus } from "react-icons/fa6";
+import { FiPlusCircle } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminGalleryItems() {
@@ -62,12 +62,12 @@ export default function AdminGalleryItems() {
   return (
     <div div className="w-full p-6 min-h-screen">
       <button
-        className="text-red-900 text-[28px] fixed right-6 bottom-6"
+        className="bg-blue-300 rounded-full text-[30px] text-blue-900 fixed top-6 right-6"
         onClick={() => {
           handlePlusButton();
         }}
       >
-        <FaCirclePlus />
+        <FiPlusCircle />
       </button>
 
       <h1 className="text-2xl text-gray-800 font-bold text-center my-4">

@@ -57,12 +57,12 @@ export default function AdminRooms() {
   return (
     <div className="w-full p-6 min-h-screen">
       <button
-        className="bg-purple-400 rounded-full text-[30px] text-purple-950 fixed top-6 right-6"
+        className="bg-blue-300 rounded-full text-[30px] text-blue-900 fixed top-6 right-6"
         onClick={() => {
           handlePlusClick();
         }}
       >
-       <FiPlusCircle />
+        <FiPlusCircle />
       </button>
       <h1 className="text-gray-800 text-2xl font-bold text-center my-4">
         Room Management
