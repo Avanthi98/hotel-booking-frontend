@@ -3,6 +3,7 @@ import uploadMedia from "../../../Utils/mediaUpload";
 import { getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function AddRoomForm() {
   // Implementing use states
@@ -13,6 +14,9 @@ export default function AddRoomForm() {
   const [specialDescription, setSpecialDescription] = useState("");
   const [notes, setNotes] = useState("");
   const [isLoading, setIsLoading] = useState(false); // Button loading state
+
+  //Use Navigate
+  const navigate = useNavigate();
 
   // Get token and check user authorization
   const token = localStorage.getItem("token");
@@ -60,6 +64,7 @@ export default function AddRoomForm() {
                 toast.success("Room added successfully!");
                 console.log(res);
                 setIsLoading(false);
+                navigate("/admin/rooms");
               })
               .catch((error) => {
                 console.error(error);
